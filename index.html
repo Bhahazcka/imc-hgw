@@ -15,9 +15,6 @@ body{min-height:100vh;min-height:100dvh;color:var(--hi);font-family:'Montserrat'
 @keyframes tw{0%,100%{opacity:.12}50%{opacity:.8}}
 .aurora{position:fixed;inset:-30%;z-index:0;pointer-events:none;background:conic-gradient(from 0deg at 50% 50%,rgba(57,226,143,.07),transparent 30%,rgba(34,194,184,.07) 55%,transparent 80%,rgba(57,226,143,.07));animation:spin 60s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.brand{position:absolute;top:clamp(12px,3vw,22px);left:clamp(12px,3vw,22px);z-index:10;width:clamp(44px,10vw,66px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;overflow:hidden;background:#0f351e;border:2px solid rgba(57,226,143,.6);box-shadow:0 0 18px rgba(57,226,143,.4)}
-.brand img{width:100%;height:100%;object-fit:contain;padding:4px;display:none}
-.brand b{font:800 clamp(.6rem,2.4vw,.8rem)/1 'Orbitron',sans-serif;color:var(--cy);letter-spacing:1px}
 header{position:relative;z-index:2;text-align:center;margin-top:clamp(10px,2vw,18px);max-width:680px;width:100%}
 .wordmark{font:800 clamp(1.5rem,6.4vw,2.4rem)/1 'Orbitron',sans-serif;letter-spacing:clamp(3px,1.4vw,8px);background:linear-gradient(180deg,#f2fdf7,#b4f2d3 35%,#59c48b 70%,#246b45);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 16px rgba(57,226,143,.4))}
 .tagline{margin-top:8px;font-size:clamp(.7rem,2.4vw,.85rem);font-weight:600;letter-spacing:1.5px;color:var(--lo)}
@@ -76,7 +73,6 @@ footer{position:relative;z-index:2;margin-top:clamp(24px,6vw,40px);text-align:ce
 </style>
 </head>
 <body>
-<div class="brand"><img id="logo" alt="Logo HGW"><b id="mono">HGW</b></div>
 <div class="aurora"></div><div id="stars"></div>
 
 <header>
@@ -124,10 +120,8 @@ footer{position:relative;z-index:2;margin-top:clamp(24px,6vw,40px);text-align:ce
 <footer>Copyright©2026. Propiedad de TechRep S.R.L. Todos los derechos reservados.</footer>
 
 <script>
-const LOGO_SRC='https://static.wixstatic.com/media/d00cad_a73297e5a2a34f55a3233e9a439edaf1~mv2.png';
 const $=id=>document.getElementById(id);
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-(function(){const i=$('logo'),m=$('mono');i.onload=()=>{i.style.display='block';m.style.display='none'};i.onerror=()=>{i.style.display='none'};i.src=LOGO_SRC})();
 (function(){const f=$('stars'),fr=document.createDocumentFragment();for(let i=0;i<60;i++){const s=document.createElement('div'),z=Math.random()*2+.6;s.className='star';s.style.cssText=`width:${z}px;height:${z}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${Math.random()*3+2}s;animation-delay:${Math.random()*3}s`;fr.appendChild(s)}f.appendChild(fr)})();
 
 const CATS=[
@@ -177,5 +171,19 @@ $('cp').onclick=()=>{
 };
 $('wa').onclick=()=>{if(!lastText)return;const u='https://wa.me/?text='+encodeURIComponent(lastText);const w=window.open(u,'_blank','noopener');if(!w)location.href=u};
 </script>
+
+<!-- ===== BOTÓN VOLVER A INICIO (Vende y Afilia) ===== -->
+<a class="hgw-back" href="https://vende-y-afilia.vercel.app/">🏠 VOLVER A INICIO</a>
+<style>
+.hgw-back{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:99999;
+  display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;white-space:nowrap;text-decoration:none;
+  font:800 .8rem/1 'Orbitron','Montserrat',system-ui,sans-serif;letter-spacing:.08em;color:#04150f;
+  background:linear-gradient(135deg,#2ee59d,#9bff6a);box-shadow:0 10px 30px -8px rgba(46,229,157,.7);
+  transition:transform .25s,box-shadow .25s}
+.hgw-back:hover{transform:translateX(-50%) translateY(-4px);box-shadow:0 16px 40px -8px rgba(46,229,157,.9)}
+.hgw-back:active{transform:translateX(-50%) scale(.96)}
+/* Espacio extra abajo para que el botón flotante no tape el pie de página */
+body{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+</style>
 </body>
 </html>
